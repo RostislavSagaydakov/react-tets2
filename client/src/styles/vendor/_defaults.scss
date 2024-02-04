@@ -1,0 +1,19 @@
+:root {
+  --base-unit-size: 10px;
+  --base-max-width: 1636px;
+  --base-font: Arial, tahoma, sans-serif;
+  --base-title-font: "Times New Roman", Georgia, serif;
+  --color-primary: #9A602E;
+  --color-secondary:#CCB162;
+  --color-light: #fff;
+  --color-dark: #000;
+  --border-color-default:rgba(0,0,0, .3);
+  --border-color-active: #9A602E;
+  --navigation-font-size: 1.8rem;
+  --button-font-size: 1.5rem;
+  --border-radius-default: .6rem;
+
+  --animation-default: all 250ms ease;
+  --dropdown-background-default: #CCB162;
+  --box-shadow-default: 0 4px 4px 0 #A1A1A1;
+}

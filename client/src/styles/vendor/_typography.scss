@@ -1,0 +1,25 @@
+html {
+  font-family: var(--base-font);
+  font-size: var(--base-unit-size);
+  line-height: 1.2;
+}
+h1,h2,h3,h4 {
+  font-family: var(--base-title-font);
+  margin-bottom: clamp(1rem, 1.5vw, 2rem);;
+}
+h1 {
+  font-size: clamp(3.5rem, 4vw, 4.5rem);
+}
+h2 {
+  font-size: clamp(3.1rem, 3.6vw, 4.1rem);
+}
+h3 {
+  font-size: clamp(2.7rem, 3.2vw, 3.7rem);
+}
+h4 {
+  font-size: clamp(2.3rem, 2.6vw, 3.3rem);
+}
+
+p {
+  font-size: 1.6rem;
+}

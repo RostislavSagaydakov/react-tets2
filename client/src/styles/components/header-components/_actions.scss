@@ -1,0 +1,24 @@
+.header {
+  &__actions {
+    display: flex;
+    justify-content: end;
+
+    &-action {
+      border-style: none;
+
+      .icon {
+        width: 1.6rem;
+      }
+    }
+  }
+
+  &__search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    &-container {
+      position: relative;
+    }
+  }
+}

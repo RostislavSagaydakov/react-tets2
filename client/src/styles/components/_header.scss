@@ -1,0 +1,23 @@
+@import "header-components";
+.header {
+  &__notification {
+    background: var(--color-primary);
+    color: var(--color-light);
+    text-align: center;
+    font-size: 2rem;
+    padding: .7rem;
+  }
+
+  &__container {
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+  }
+
+  .logo {
+    width: 18rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

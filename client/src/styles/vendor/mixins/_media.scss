@@ -1,0 +1,44 @@
+$breakpoints: (
+  xs: 480px,
+  s: 640px,
+  m: 768px,
+  l: 1024px,
+  xl: 1440px
+);
+//  usage for media queries
+//  @include media(xs, max-width) {
+//    // styles for $xs
+//  }
+//  @include media(xs, min-width) {
+//    // styles for $xs + 1
+//  }
+//  @include media(xs, only) {
+//    // only for xs to s screens
+//  }
+
+@mixin media($breakpoint, $condition: min-width) {
+  $width: map-get($breakpoints, $breakpoint);
+  $next: null;
+
+  @if index(map-keys($breakpoints), $breakpoint) < length($breakpoints) {
+    $next: nth($breakpoints, index(map-keys($breakpoints), $breakpoint) + 1);
+  }
+
+  @if $condition == min-width {
+    @media only screen and (min-width: $width + 1) {
+      @content;
+    }
+  } @else if $condition == max-width {
+    @media only screen and (max-width: $width) {
+      @content;
+    }
+  } @else if $condition == only {
+    @if $next {
+      @media only screen and (max-width: $width) and (min-width: $next) {
+        @content;
+      }
+    } @else {
+      @error "No next breakpoint defined for #{$breakpoint}.";
+    }
+  }
+}

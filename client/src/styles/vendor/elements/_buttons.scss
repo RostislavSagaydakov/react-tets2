@@ -1,0 +1,44 @@
+$button-color: var(--color-dark);
+$button-color-primary: var(--color-light);
+$button-color-secondary: var(--color-light);
+$button-background-color-default: var(--color-light);
+$button-background-color-primary: var(--color-primary);
+$button-background-color-secondary: var(--color-secondary);
+$button-border-color-default: var(--border-color-default);
+$button-padding-default: 1rem 2rem;
+$button-font-size: var(--button-font-size);
+
+button {
+  color: $button-color;
+  border: 1px solid $button-border-color-default;
+  cursor: pointer;
+  background: $button-background-color-default;
+  padding: $button-padding-default;
+  font-size: $button-font-size;
+  text-align: center;
+  opacity: 0.7;
+  transition: all 250ms ease;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.primary {
+    background: $button-background-color-primary;
+    color: $button-color-primary;
+    border-color: $button-background-color-primary;
+  }
+
+  &.secondary {
+    background: $button-background-color-secondary;
+    color: $button-color-secondary;
+    border-color: $button-background-color-secondary;
+  }
+}
