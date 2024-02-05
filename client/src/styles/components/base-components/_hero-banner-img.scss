@@ -1,0 +1,67 @@
+.hero-banner {
+  position: relative;
+
+  &__image-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+  }
+
+  &__text {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    &.position {
+      &-right {
+        justify-content: end;
+      }
+      &-left {
+        justify-content: start;
+      }
+      &-center {
+        justify-content: center;
+      }
+    }
+
+    &.align {
+      &-top {
+        align-items: start;
+      }
+      &-center {
+        align-items: center;
+      }
+      &-bottom {
+        align-items: end;
+      }
+    }
+
+    .holder {
+      width: clamp(300px, 50%, 800px);
+    }
+  }
+
+  &__sub-title {
+    font-size: 1.6rem;
+  }
+
+  .lazy-load-image-loaded {
+    display: block !important;
+
+    + .hero-banner__image-overlay {
+      display: block;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  .button {
+    opacity: 1;
+  }
+}

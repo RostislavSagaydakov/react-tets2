@@ -1,3 +1,5 @@
+$nav-active-line-color: var(--border-color-active);
+$nav-active-line-submenu-color: var(--color-light);
 .header {
   &__navigation {
     font-size: var(--navigation-font-size);
@@ -7,7 +9,9 @@
 
     > li {
       text-transform: uppercase;
+      position: relative;
 
+      &:has(a:focus-visible),
       &:hover {
         .icon {
           transform: rotate(-180deg);
@@ -16,7 +20,7 @@
           opacity: 1;
           pointer-events: all;
           transform: translateY(0);
-          gap: 1.4rem;
+          row-gap: 2rem;
         }
       }
 
@@ -25,10 +29,21 @@
         align-items: center;
         gap: 1rem;
         padding-block: 1rem;
+
+        &.active {
+          &:after {
+            display: block;
+            width: 80%;
+            left: 0;
+            height: 4px;
+            background: $nav-active-line-color;
+            border-radius: 0 0 4px 4px;
+          }
+        }
       }
 
       .icon {
-        transition: var(--animation-defaul);
+        transition: var(--animation-default);
         transform: rotate(0deg);
       }
     }
@@ -36,30 +51,46 @@
     .dropdown {
       position: relative;
 
+      &-toggle {
+        &:after {
+          display: none;
+        }
+      }
+
       &-menu {
         $link-color: var(--color-light);
 
         border-radius: var(--border-radius-default);
         background: var(--dropdown-background-default);
         transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out, 0.3s gap ease;
+        animation-delay: 1s;
         position: absolute;
         top: 100%;
         left: -2rem;
         padding: 2rem;
         white-space: nowrap;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
-        flex-direction: column;
-        text-transform: none;
+        column-gap: 2rem;
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
         box-shadow: var(--box-shadow-default);
+        text-transform: capitalize;
 
         a {
           color: $link-color;
           &:after {
             background: $link-color;
+          }
+
+          &.active {
+            &:after {
+              display: block;
+              width: 80%;
+              background: $nav-active-line-submenu-color;
+            }
           }
         }
       }

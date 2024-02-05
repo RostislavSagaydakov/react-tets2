@@ -8,6 +8,7 @@ $button-border-color-default: var(--border-color-default);
 $button-padding-default: 1rem 2rem;
 $button-font-size: var(--button-font-size);
 
+.button,
 button {
   color: $button-color;
   border: 1px solid $button-border-color-default;
@@ -18,7 +19,14 @@ button {
   text-align: center;
   opacity: 0.7;
   transition: all 250ms ease;
+  display: inline-block;
+  vertical-align: middle;
 
+  &:after {
+    display: none;
+  }
+
+  &:focus-visible,
   &:hover {
     opacity: 1;
     transform: scale(1.1);

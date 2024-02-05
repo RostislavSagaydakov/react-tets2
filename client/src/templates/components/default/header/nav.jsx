@@ -1,46 +1,25 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
-
-const categories = [
-    [
-        "Bracelets",
-        "Earrings",
-        "Necklaces",
-        "Shop Earrings",
-        "Wedding & Bridal"
-    ],
-    "Contact Us",
-    "Blog"
-];
-
+import Navigation from "../../elements/navigation/navigation";
+import {NavLink} from "react-router-dom";
 function NavigationMenu() {
-    const renderMenuItems = () => {
-        return categories.map((item, index) => {
-            if (Array.isArray(item)) {
-                const dropdownItems = item.map((subItem, subIndex) => (
-                    <li key={subIndex}><a href="#">{subItem}</a></li>
-                ));
-                return (
-                    <li key={index} className="dropdown">
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                            All products
-                            <FontAwesomeIcon icon={faChevronDown} className="icon" />
-                        </a>
-                        <ul className="dropdown-menu">
-                            {dropdownItems}
-                        </ul>
-                    </li>
-                );
-            } else {
-                return <li key={index}><a href="#">{item}</a></li>;
-            }
-        });
-    };
-
     return (
         <ul className="header__navigation">
-            {renderMenuItems()}
+            <li>
+                <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="dropdown">
+                <NavLink to="/shop" className="dropdown-toggle">
+                    <span>Shop</span>
+                    <FontAwesomeIcon icon={faChevronDown} className="icon" />
+                </NavLink>
+                <ul className="dropdown-menu">
+                    <Navigation/>
+                </ul>
+            </li>
+            <li><NavLink to="/contact">Contact us</NavLink></li>
+            <li><NavLink to="/blog">Articles</NavLink></li>
         </ul>
     );
 }

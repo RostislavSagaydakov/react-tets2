@@ -19,7 +19,7 @@ footer, header, nav, section, main {
 }
 
 body {
-  line-height: 1;
+  line-height: 1.2;
 }
 
 ol, ul {
@@ -88,6 +88,8 @@ body {
 
 .main {
   flex: 1 1 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -96,10 +98,18 @@ body {
   padding-inline: 1.5rem;
 }
 
+.header {
+  position: relative;
+  z-index: 2;
+}
+
+.full-width {
+  width: 100%;
+}
+
 html {
   font-family: var(--base-font);
   font-size: var(--base-unit-size);
-  line-height: 1.2;
 }
 
 h1, h2, h3, h4 {
@@ -139,6 +149,7 @@ input[type=number]:focus, input[type=text]:focus {
   outline: none;
 }
 
+.button,
 button {
   color: var(--color-dark);
   border: 1px solid var(--border-color-default);
@@ -149,21 +160,32 @@ button {
   text-align: center;
   opacity: 0.7;
   transition: all 250ms ease;
+  display: inline-block;
+  vertical-align: middle;
 }
+.button:after,
+button:after {
+  display: none;
+}
+.button:focus-visible, .button:hover,
+button:focus-visible,
 button:hover {
   opacity: 1;
   transform: scale(1.1);
   position: relative;
   z-index: 2;
 }
+.button:active,
 button:active {
   transform: scale(0.9);
 }
+.button.primary,
 button.primary {
   background: var(--color-primary);
   color: var(--color-light);
   border-color: var(--color-primary);
 }
+.button.secondary,
 button.secondary {
   background: var(--color-secondary);
   color: var(--color-light);
@@ -199,15 +221,16 @@ a.active:after {
 }
 .header__navigation > li {
   text-transform: uppercase;
+  position: relative;
 }
-.header__navigation > li:hover .icon {
+.header__navigation > li:has(a:focus-visible) .icon, .header__navigation > li:hover .icon {
   transform: rotate(-180deg);
 }
-.header__navigation > li:hover .dropdown-menu {
+.header__navigation > li:has(a:focus-visible) .dropdown-menu, .header__navigation > li:hover .dropdown-menu {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
-  gap: 1.4rem;
+  row-gap: 2rem;
 }
 .header__navigation > li > a {
   display: flex;
@@ -215,35 +238,53 @@ a.active:after {
   gap: 1rem;
   padding-block: 1rem;
 }
+.header__navigation > li > a.active:after {
+  display: block;
+  width: 80%;
+  left: 0;
+  height: 4px;
+  background: var(--border-color-active);
+  border-radius: 0 0 4px 4px;
+}
 .header__navigation > li .icon {
-  transition: var(--animation-defaul);
+  transition: var(--animation-default);
   transform: rotate(0deg);
 }
 .header__navigation .dropdown {
   position: relative;
 }
+.header__navigation .dropdown-toggle:after {
+  display: none;
+}
 .header__navigation .dropdown-menu {
   border-radius: var(--border-radius-default);
   background: var(--dropdown-background-default);
   transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out, 0.3s gap ease;
+  animation-delay: 1s;
   position: absolute;
   top: 100%;
   left: -2rem;
   padding: 2rem;
   white-space: nowrap;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  flex-direction: column;
-  text-transform: none;
+  column-gap: 2rem;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
   box-shadow: var(--box-shadow-default);
+  text-transform: capitalize;
 }
 .header__navigation .dropdown-menu a {
   color: var(--color-light);
 }
 .header__navigation .dropdown-menu a:after {
+  background: var(--color-light);
+}
+.header__navigation .dropdown-menu a.active:after {
+  display: block;
+  width: 80%;
   background: var(--color-light);
 }
 
@@ -286,4 +327,59 @@ a.active:after {
   vertical-align: middle;
 }
 
-/*# sourceMappingURL=app.css.map */
+.hero-banner {
+  position: relative;
+}
+.hero-banner__image-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+.hero-banner__text {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.hero-banner__text.position-right {
+  justify-content: end;
+}
+.hero-banner__text.position-left {
+  justify-content: start;
+}
+.hero-banner__text.position-center {
+  justify-content: center;
+}
+.hero-banner__text.align-top {
+  align-items: start;
+}
+.hero-banner__text.align-center {
+  align-items: center;
+}
+.hero-banner__text.align-bottom {
+  align-items: end;
+}
+.hero-banner__text .holder {
+  width: clamp(300px, 50%, 800px);
+}
+.hero-banner__sub-title {
+  font-size: 1.6rem;
+}
+.hero-banner .lazy-load-image-loaded {
+  display: block !important;
+}
+.hero-banner .lazy-load-image-loaded + .hero-banner__image-overlay {
+  display: block;
+}
+.hero-banner .lazy-load-image-loaded img {
+  display: block;
+  max-width: 100%;
+}
+.hero-banner .button {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=App.css.map */
